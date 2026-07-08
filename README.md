@@ -1,7 +1,7 @@
 # 🛡️ QWRLY – AI Powered Cyber Threat Detection & Reporting System
 
 <p align="center">
-  <img src="qwely-extension/icons/icon128.png" alt="QWRLY Logo" width="120">
+  <img src="qwrly-extension/icons/icon128.png" alt="QWRLY Logo" width="120">
 </p>
 
 <p align="center">
