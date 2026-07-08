@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QWRLY — Threat Operations Center</title>
+    <link rel="icon" href="../icons/icon32.png">
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+
+    <div class="sidebar">
+        <div class="brand">
+            <img class="brand-logo" src="../icons/icon128.png" alt="QWRLY logo">
+            <div class="brand-text">QWRLY</div>
+        </div>
+
+        <ul class="nav-menu">
+            <li class="nav-item active" data-tab="overview">
+                <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+                Overview
+            </li>
+            <li class="nav-item" data-tab="gmail">
+                <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                Gmail Scanner
+            </li>
+            <li class="nav-item" data-tab="sms">
+                <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+                Twilio SMS Route
+            </li>
+            <li class="nav-item" data-tab="sandbox">
+                <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+                Sandbox Analysis
+            </li>
+            <li class="nav-item" data-tab="retell">
+                <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                Retell Voice AI
+            </li>
+            <li class="nav-item" data-tab="complaints">
+                <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 9v4"></path><path d="M12 17h.01"></path><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0Z"></path></svg>
+                Complaints
+            </li>
+            <li class="nav-item" data-tab="settings">
+                <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+                Settings
+            </li>
+        </ul>
+
+        <div class="user-profile">
+            <div class="avatar">Q</div>
+            <div class="user-info">
+                <div class="name">Developer Account</div>
+                <div class="status"><span class="dot"></span> OAuth Mode</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="workspace">
+
+        <!-- OVERVIEW -->
+        <div id="overview" class="dashboard-grid active-panel">
+            <div class="col-12 header-actions">
+                <div class="page-title">
+                    <h2>Threat Operations Center</h2>
+                    <p>Unified view of QWRLY's live defensive pipeline status.</p>
+                </div>
+                <button class="btn btn-primary" data-goto="sandbox">Run Instant Scan</button>
+            </div>
+
+            <div class="card col-4">
+                <div class="card-title">Gmail Integration</div>
+                <div class="metric-value" id="gmailStatusValue">Not connected</div>
+                <p class="muted-note">Scope: <code>gmail.readonly</code></p>
+            </div>
+            <div class="card col-4">
+                <div class="card-title">Twilio Tunnel</div>
+                <div class="metric-value accent-cyan" id="twilioNumberDisplay">Not configured</div>
+                <p class="muted-note">Live Webhook Gateway</p>
+            </div>
+            <div class="card col-4">
+                <div class="card-title">Malicious Links Shielded</div>
+                <div class="metric-value accent-pink">427</div>
+                <p class="muted-note">Safe Browsing API &amp; VT Core</p>
+            </div>
+
+            <div class="card col-12">
+                <div class="card-header-inline">
+                    <div class="card-title">Recent Threat Interceptions</div>
+                    <span class="badge badge-info">Real-time Stream</span>
+                </div>
+                <div class="table-wrapper">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Source Type</th>
+                                <th>Origin Sender / Address</th>
+                                <th>Extracted Target Artifact</th>
+                                <th>Risk Verdict</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><span class="badge badge-info">Gmail API</span></td>
+                                <td>security@accounts-verify-alert.com</td>
+                                <td><code>https://bit.ly/secure-login-update</code></td>
+                                <td><span class="badge badge-danger">Phishing (VT: 14/80)</span></td>
+                                <td>Blocked</td>
+                            </tr>
+                            <tr>
+                                <td><span class="badge badge-warning">Twilio SMS</span></td>
+                                <td>+1 (202) 555-0143</td>
+                                <td><code>https://chase-banking-security.net/id</code></td>
+                                <td><span class="badge badge-danger">Malicious (Google SB)</span></td>
+                                <td>Flagged</td>
+                            </tr>
+                            <tr>
+                                <td><span class="badge badge-info">Gmail API</span></td>
+                                <td>newsletter@legitcorp.com</td>
+                                <td><code>https://legitcorp.com/weekly-digest</code></td>
+                                <td><span class="badge badge-success">Clean</span></td>
+                                <td>Allowed</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- GMAIL -->
+        <div id="gmail" class="dashboard-grid">
+            <div class="col-12 header-actions">
+                <div class="page-title">
+                    <h2>Gmail API Scanner Control</h2>
+                    <p>Live session telemetry checking email bodies for links, shorteners, and structural anomalies.</p>
+                </div>
+                <button class="btn btn-accent" id="gmailConnectBtn">Connect Gmail</button>
+            </div>
+            <div class="card col-8">
+                <div class="card-header-inline">
+                    <div class="card-title">Polled Ingest Queue</div>
+                </div>
+                <div class="table-wrapper">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Message ID</th>
+                                <th>Subject Context</th>
+                                <th>Detected Links</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>msg_9a2b84c</code></td>
+                                <td>Urgent: Update your account verification</td>
+                                <td>1 Link Found</td>
+                                <td><span class="badge badge-danger">Isolated</span></td>
+                            </tr>
+                            <tr>
+                                <td><code>msg_1f4e56d</code></td>
+                                <td>Invoice #2026-88496 attached</td>
+                                <td>0 Links / 1 PDF</td>
+                                <td><span class="badge badge-success">Passed</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="card col-4">
+                <div class="card-title">OAuth Configuration</div>
+                <div class="config-note">
+                    <p><strong>Status:</strong> <span id="gmailOauthStatus" class="accent-green">Not connected</span></p>
+                    <p><strong>Scope:</strong> <code>https://www.googleapis.com/auth/gmail.readonly</code></p>
+                    <p>Set your Google OAuth client ID in <a data-goto="settings">Settings</a> before connecting.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- SMS -->
+        <div id="sms" class="dashboard-grid">
+            <div class="col-12 header-actions">
+                <div class="page-title">
+                    <h2>Twilio SMS Gateway</h2>
+                    <p>Forward suspicious SMS to your QWRLY Twilio number for scanning — routed to your FastAPI backend via webhook.</p>
+                </div>
+            </div>
+            <div class="card col-4">
+                <div class="card-title">Configured Endpoint</div>
+                <div class="metric-value accent-cyan medium" id="smsNumberDisplay">Not configured</div>
+                <p class="muted-note">
+                    Forward suspected messages to this number. FastAPI handles the raw payload via Twilio's webhook.
+                </p>
+            </div>
+            <div class="card col-8">
+                <div class="card-title">Webhook Payload Capture Feed</div>
+                <div class="table-wrapper" style="margin-top:20px;">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Sender</th>
+                                <th>Message Text</th>
+                                <th>Extracted Domain</th>
+                                <th>Threat Tier</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>+1 (646) 555-9821</td>
+                                <td>"Your FedEx delivery failed. Check status now at: fedx-package-tracking.info"</td>
+                                <td><code>fedx-package-tracking.info</code></td>
+                                <td><span class="badge badge-danger">High Risk</span></td>
+                            </tr>
+                            <tr>
+                                <td>+1 (312) 555-4412</td>
+                                <td>"Hey, are you still heading out to the meeting tonight?"</td>
+                                <td>None</td>
+                                <td><span class="badge badge-success">Zero Risk</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- SANDBOX -->
+        <div id="sandbox" class="dashboard-grid">
+            <div class="col-12 header-actions">
+                <div class="page-title">
+                    <h2>Manual Link &amp; QR Inspection</h2>
+                    <p>Check a URL or decode a QR code image against Safe Browsing and VirusTotal.</p>
+                </div>
+            </div>
+            <div class="card col-6">
+                <div class="card-title">Manual URL Analysis</div>
+                <div class="config-note">
+                    <div class="form-control">
+                        <label>Target URL</label>
+                        <input type="text" id="sandboxUrlInput" placeholder="https://suspicious-domain.xyz/login">
+                    </div>
+                    <button class="btn btn-primary full-width" id="sandboxScanBtn">Submit Check</button>
+                    <div id="sandboxResult" class="scan-result-block hidden"></div>
+                </div>
+            </div>
+            <div class="card col-6">
+                <div class="card-title">QR Code Image Processor (pyzbar)</div>
+                <div class="config-note">
+                    <div class="drop-zone" id="qrDropZone">
+                        <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M3.75 4.875c0-.621.504-1.125 1.125-1.125h4.5c.621 0 1.125.504 1.125 1.125v4.5c0 .621-.504 1.125-1.125 1.125h-4.5A1.125 1.125 0 013.75 9.375v-4.5zM3.75 14.625c0-.621.504-1.125 1.125-1.125h4.5c.621 0 1.125.504 1.125 1.125v4.5c0 .621-.504 1.125-1.125 1.125h-4.5a1.125 1.125 0 01-1.125-1.125v-4.5zM13.5 4.875c0-.621.504-1.125 1.125-1.125h4.5c.621 0 1.125.504 1.125 1.125v4.5c0 .621-.504 1.125-1.125 1.125h-4.5A1.125 1.125 0 0113.5 9.375v-4.5z"></path></svg>
+                        <p>Drop a QR code image here, or click to select a file.</p>
+                        <input type="file" id="qrFileInput" accept="image/*" hidden>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- RETELL -->
+        <div id="retell" class="dashboard-grid">
+            <div class="col-12 header-actions">
+                <div class="page-title">
+                    <h2>Retell AI Voice Incident Reporting</h2>
+                    <p>Trigger a structured post-incident voice interview via your Retell conversational agent.</p>
+                </div>
+                <button class="btn btn-accent" id="triggerCallBtn">Start voice report call</button>
+            </div>
+
+            <div class="card col-7">
+                <div class="card-header-inline">
+                    <div class="card-title">Live Call Transcript</div>
+                    <span class="badge badge-warning" id="callStatusBadge">Idle</span>
+                </div>
+                <div class="transcript-box" id="transcriptContainer">
+                    <p class="muted-note center-pad">Start a call to see the live transcript here, streamed from Retell's webhook.</p>
+                </div>
+            </div>
+
+            <div class="card col-5">
+                <div class="card-title">Post-Call Structured Report</div>
+                <p class="muted-note">Retell's post-call analysis returns this JSON to your backend, which files it as a complaint.</p>
+                <pre class="json-block" id="jsonSchemaBlock">{
+  "incident_state": "WAITING_FOR_TRIGGER",
+  "structured_analysis": null,
+  "telemetry_metrics": {
+    "duration_seconds": 0,
+    "user_sentiment": "NEUTRAL"
+  }
+}</pre>
+            </div>
+        </div>
+
+        <!-- COMPLAINTS -->
+        <div id="complaints" class="dashboard-grid">
+            <div class="col-12 header-actions">
+                <div class="page-title">
+                    <h2>Complaints</h2>
+                    <p>Every flagged link, forwarded SMS, and voice report lands here as a structured record.</p>
+                </div>
+                <button class="btn btn-primary" id="newComplaintBtn">File new complaint</button>
+            </div>
+
+            <div class="card col-12" id="newComplaintCard" style="display:none;">
+                <div class="card-title">New complaint</div>
+                <div class="config-note">
+                    <div class="form-control">
+                        <label>What happened</label>
+                        <input type="text" id="complaintWhat" placeholder="e.g. Clicked a link in a banking email">
+                    </div>
+                    <div class="form-control">
+                        <label>Suspicious link or number (optional)</label>
+                        <input type="text" id="complaintArtifact" placeholder="https://... or phone number">
+                    </div>
+                    <div class="form-control">
+                        <label>When did it happen</label>
+                        <input type="text" id="complaintWhen" placeholder="e.g. Today, around 3pm">
+                    </div>
+                    <button class="btn btn-primary" id="submitComplaintBtn">Submit complaint</button>
+                </div>
+            </div>
+
+            <div class="card col-12">
+                <div class="card-header-inline">
+                    <div class="card-title">Filed complaints</div>
+                    <span class="badge badge-info">Synced with backend</span>
+                </div>
+                <div class="table-wrapper">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Source</th>
+                                <th>Description</th>
+                                <th>Artifact</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="complaintsTableBody">
+                            <tr>
+                                <td><span class="badge badge-info">Voice report</span></td>
+                                <td>Clicked a phishing link, no credentials entered</td>
+                                <td><code>fedx-package-tracking.info</code></td>
+                                <td><span class="badge badge-warning">Under review</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- SETTINGS -->
+        <div id="settings" class="dashboard-grid">
+            <div class="col-12 header-actions">
+                <div class="page-title">
+                    <h2>Settings</h2>
+                    <p>Connect your backend and third-party accounts. These values are stored locally in the extension.</p>
+                </div>
+            </div>
+
+            <div class="card col-6">
+                <div class="card-title">Backend connection</div>
+                <div class="config-note">
+                    <div class="form-control">
+                        <label>API base URL</label>
+                        <input type="text" id="settingsApiBase" placeholder="http://localhost:8000">
+                    </div>
+                    <button class="btn btn-primary" id="saveApiBaseBtn">Save</button>
+                    <p class="muted-note" id="apiBaseSavedNote"></p>
+                </div>
+            </div>
+
+            <div class="card col-6">
+                <div class="card-title">Gmail account</div>
+                <div class="config-note">
+                    <p><strong>Status:</strong> <span id="settingsGmailStatus" class="accent-green">Not connected</span></p>
+                    <p class="muted-note">Requires a Google OAuth client ID set in <code>manifest.json</code> with the Gmail API enabled.</p>
+                    <div class="settings-btn-row">
+                        <button class="btn btn-primary" id="settingsConnectGmail">Connect</button>
+                        <button class="btn btn-accent" id="settingsDisconnectGmail">Disconnect</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card col-6">
+                <div class="card-title">Twilio SMS forwarding</div>
+                <div class="config-note">
+                    <div class="form-control">
+                        <label>Twilio phone number</label>
+                        <input type="text" id="settingsTwilioNumber" placeholder="+1 (555) 019-2831">
+                    </div>
+                    <p class="muted-note">This number is provisioned in your Twilio console; QWRLY only needs it here to display and to match incoming webhooks.</p>
+                    <button class="btn btn-primary" id="saveTwilioBtn">Save</button>
+                </div>
+            </div>
+
+            <div class="card col-6">
+                <div class="card-title">Retell AI voice agent</div>
+                <div class="config-note">
+                    <div class="form-control">
+                        <label>Retell agent ID</label>
+                        <input type="text" id="settingsRetellAgent" placeholder="agent_xxx">
+                    </div>
+                    <div class="form-control">
+                        <label>Report-to phone number</label>
+                        <input type="text" id="settingsRetellPhone" placeholder="+91...">
+                    </div>
+                    <button class="btn btn-primary" id="saveRetellBtn">Save</button>
+                </div>
+            </div>
+
+            <div class="card col-12">
+                <div class="card-title">Notifications</div>
+                <div class="config-note toggle-row">
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="notifyToggle" checked>
+                        <span class="toggle-slider"></span>
+                    </label>
+                    <span>Show a desktop notification when a threat is blocked</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="dashboard.js"></script>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>QWRLY</title>
+<link rel="stylesheet" href="popup.css">
+</head>
+<body>
+
+  <div class="popup-shell">
+
+    <header class="popup-header">
+      <div class="brand">
+        <img src="../icons/icon128.png" alt="QWRLY" class="brand-icon">
+        <span class="brand-name">QWRLY</span>
+      </div>
+      <button class="complaint-btn" id="complaintBtn" title="File a complaint" aria-label="File a complaint">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9v4"></path><path d="M12 17h.01"></path><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0Z"></path></svg>
+        Complaint
+      </button>
+    </header>
+
+    <section class="status-card">
+      <div class="status-row">
+        <span class="status-dot on"></span>
+        <span class="status-label">Protection active</span>
+      </div>
+      <p class="status-sub">Scanning Gmail, links, QR codes, and forwarded SMS in real time.</p>
+    </section>
+
+    <section class="metrics-row">
+      <div class="metric">
+        <span class="metric-value danger" id="threatsToday">3</span>
+        <span class="metric-label">Threats today</span>
+      </div>
+      <div class="metric">
+        <span class="metric-value" id="scansToday">142</span>
+        <span class="metric-label">Scans today</span>
+      </div>
+      <div class="metric">
+        <span class="metric-value success" id="complaintsFiled">1</span>
+        <span class="metric-label">Complaints</span>
+      </div>
+    </section>
+
+    <section class="scan-box">
+      <label for="quickUrl">Check a link or paste QR text</label>
+      <div class="scan-input-row">
+        <input type="text" id="quickUrl" placeholder="https://example.com/...">
+        <button id="quickScanBtn">Scan</button>
+      </div>
+      <div id="scanResult" class="scan-result hidden"></div>
+    </section>
+
+    <section class="recent-alerts">
+      <div class="section-title">Recent alerts</div>
+      <ul class="alert-list" id="alertList">
+        <li class="alert-item danger">
+          <span class="alert-source">Gmail</span>
+          <span class="alert-text">Phishing link in "Account verification required"</span>
+        </li>
+        <li class="alert-item warning">
+          <span class="alert-source">SMS</span>
+          <span class="alert-text">Suspicious delivery-tracking link forwarded via Twilio</span>
+        </li>
+      </ul>
+    </section>
+
+    <footer class="popup-footer">
+      <button class="footer-btn" id="openDashboard">Open dashboard</button>
+      <button class="footer-btn ghost" id="openSettings">Settings</button>
+    </footer>
+
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

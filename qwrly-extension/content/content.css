@@ -1,0 +1,49 @@
+#qwrly-float-btn {
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  z-index: 999999;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: #060709;
+  color: #ffffff;
+  border: 1px solid rgba(255, 0, 85, 0.4);
+  border-radius: 999px;
+  padding: 8px 14px 8px 8px;
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+  transition: all 0.2s ease;
+}
+
+#qwrly-float-btn:hover {
+  background: #ff0055;
+  border-color: #ff0055;
+}
+
+#qwrly-float-btn img {
+  width: 18px;
+  height: 18px;
+  border-radius: 4px;
+}
+
+.qwrly-warning-badge {
+  display: inline-block;
+  margin-left: 6px;
+  padding: 1px 8px;
+  border-radius: 6px;
+  background: rgba(255, 0, 85, 0.12);
+  color: #ff0055;
+  border: 1px solid rgba(255, 0, 85, 0.35);
+  font-size: 11px;
+  font-weight: 600;
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  cursor: help;
+}
+
+a.qwrly-flagged-link {
+  text-decoration: underline wavy #ff0055 !important;
+}

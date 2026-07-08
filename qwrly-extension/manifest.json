@@ -1,0 +1,59 @@
+{
+  "manifest_version": 3,
+  "name": "QWRLY — Cyber Threat Shield",
+  "short_name": "QWRLY",
+  "version": "1.0.0",
+  "description": "Real-time protection against phishing links, malicious QR codes, and SMS scams — with one-tap complaint filing and voice-based incident reporting.",
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "action": {
+    "default_popup": "popup/popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "32": "icons/icon32.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    },
+    "default_title": "QWRLY — Cyber Threat Shield"
+  },
+  "background": {
+    "service_worker": "background/background.js",
+    "type": "module"
+  },
+  "permissions": [
+    "storage",
+    "identity",
+    "scripting",
+    "activeTab",
+    "alarms",
+    "notifications",
+    "tabs"
+  ],
+  "host_permissions": [
+    "https://www.googleapis.com/*",
+    "https://gmail.googleapis.com/*",
+    "https://safebrowsing.googleapis.com/*",
+    "https://www.virustotal.com/*",
+    "http://localhost:8000/*",
+    "https://*.ngrok-free.app/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["https://mail.google.com/*"],
+      "js": ["content/content.js"],
+      "css": ["content/content.css"],
+      "run_at": "document_idle"
+    }
+  ],
+  "options_page": "dashboard/dashboard.html",
+  "oauth2": {
+    "client_id": "66907948451-q0i2rn64vsbni3f0h6n5qfrl0nsa7siq.apps.googleusercontent.com",
+    "scopes": [
+      "https://www.googleapis.com/auth/gmail.readonly"
+    ]
+  }
+}
