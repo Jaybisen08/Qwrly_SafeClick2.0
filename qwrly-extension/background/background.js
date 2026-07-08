@@ -3,7 +3,7 @@
 // alarms, badge/notification state. All backend calls hit the URL the user
 // sets in Settings (defaults to a local FastAPI instance for development).
 
-const DEFAULT_API_BASE = 'https://qwrly-safe-click2-0.vercel.app/';
+const DEFAULT_API_BASE = 'https://qwrly-safe-click2-0.vercel.app';
 
 async function getApiBase() {
   const { apiBase } = await chrome.storage.sync.get('apiBase');
