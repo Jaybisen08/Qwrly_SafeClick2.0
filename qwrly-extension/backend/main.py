@@ -32,6 +32,15 @@ load_dotenv()
 
 app = FastAPI(title="QWRLY backend")
 
+@app.get("/")
+async def root():
+    return {
+        "status": "online",
+        "application": "QWRLY Backend",
+        "version": "1.0",
+        "message": "QWRLY Backend is running successfully 🚀"
+    }
+
 # The extension runs from a chrome-extension:// origin — CORS must allow it.
 app.add_middleware(
     CORSMiddleware,
